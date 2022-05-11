@@ -1,0 +1,19 @@
+{
+  "icon": "mesos.svg",
+  "vm": {
+    "composefile": "docker-compose.yaml",
+    "exposes": {
+      "socket": "extension-docker-mesos-extension.sock"
+    }
+  },
+  "ui": {
+    "dashboard-tab": {
+      "title": "Apache Mesos (unofficial)",
+      "src": "index.html",
+      "root": "ui",
+      "backend": {
+        "socket": "extension-docker-mesos-extension.sock"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+services:
+  docker-mesos-extension:
+    image: avhost/mesos-mini:1.11.x
+    command: /sbin/init
+    privileged: true
+    ports:
+      - 5050:5050
+      - 8080:8080

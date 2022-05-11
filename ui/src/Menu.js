@@ -49,7 +49,7 @@ export default function CurrentContext() {
             </>
           }
           title={
-            "Apache Mesos"
+            "Mini Mesos"
           }
         />
         <CardContent hidden={!expanded} sx={{ paddingTop: "0px" }}>

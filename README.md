@@ -18,3 +18,4 @@ See API doc here: https://github.com/docker/extensions-sdk/tree/main/docs/dev/ap
 - make extension use local web server with `docker extension dev ui-source avhost/docker-mesos-extension http://localhost:3000`
 - close and reopen Docker dashboard.
 - changes to React code will be reflected in the UI on file save automatically.
+- after developing, disable dev mode `docker extension dev reset avhost/docker-mesos-extension`

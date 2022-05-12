@@ -5,15 +5,18 @@ import ExpandLessRounded from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
 import { EditRounded } from '@mui/icons-material';
 import { LoginRounded } from '@mui/icons-material';
+import { createDockerDesktopClient } from "@docker/extension-api-client";
 
-export default function CurrentContext() {
+export default function MainMenu() {
   const [expanded, setExpanded] = useState(false);  
-
-  const handleLogin = () => {
-  };  
+  const ddClient = createDockerDesktopClient();   
 
   const handleExpand = () => {
     setExpanded(!expanded);
+  }  
+
+  const openMesosUI = () => {
+    ddClient.host.openExternal("http://localhost:5050");
   }  
 
   const styles = {
@@ -31,11 +34,11 @@ export default function CurrentContext() {
               <Tooltip title='Open Mesos UI in Browser' placement='bottom-end'>
                 <IconButton
                   aria-label="action"
-                  onClick={handleLogin}>
+                  onClick={openMesosUI}>
                   <LoginRounded />
                 </IconButton>
               </Tooltip>
-              <Tooltip title={expanded ? "Collapse context details" : "Expand details"} placement='bottom-end' >
+              <Tooltip title={expanded ? "Collapse details" : "Expand details"} placement='bottom-end' >
                 <IconButton
                   onClick={handleExpand}>
                   {(expanded) && (

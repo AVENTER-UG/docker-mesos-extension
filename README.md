@@ -1,6 +1,6 @@
-# Apache Mesos Extension for Docker Desktop
+# Docker Desktop Extenstion for Apache Mesos
 
-The Apache Mesos extension for Docker Desktop enables developers who are working with Mesos to deploy and test their 
+The Docker Desktop Extension enables developers who are working with Apache Mesos to deploy and test their 
 applications from Docker Desktop with ease.
 
 ## Building locally

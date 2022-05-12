@@ -10,6 +10,8 @@ GO_BUILD=$(STATIC_FLAGS) go build -trimpath -ldflags=$(LDFLAGS)
 INFO_COLOR = \033[0;36m
 NO_COLOR   = \033[m
 
+CHANGELOG=$(SHELL cat changelog.md)
+
 bin: ## Build the binary for the current platform
 	@echo "$(INFO_COLOR)Building...$(NO_COLOR)"
 	$(GO_BUILD) -o bin/service ./vm
@@ -21,6 +23,7 @@ install: build ## Install the extension
 	docker extension install $(IMAGE):$(TAG)
 
 update: build ## Update the extension
+	echo $(CHANGELOG)
 	docker extension update -f $(IMAGE):$(TAG)
 
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists

@@ -8,7 +8,7 @@
   },
   "ui": {
     "dashboard-tab": {
-      "title": "Apache Mesos (unofficial)",
+      "title": "Extension for Apache Mesos",
       "src": "index.html",
       "root": "ui",
       "backend": {

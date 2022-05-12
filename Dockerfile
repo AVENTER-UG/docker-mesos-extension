@@ -24,8 +24,8 @@ COPY ui /ui
 RUN npm run build
 
 FROM alpine
-LABEL org.opencontainers.image.title="Apache Mesos (unofficial)" \
-    org.opencontainers.image.description="Mini Mesos Docker Extension enables you run a local Mesos cluster." \
+LABEL org.opencontainers.image.title="Docker Extension for Apache Mesos" \
+    org.opencontainers.image.description="This Docker Extension enables you run a local Apache Mesos cluster." \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://assets.d2iq.com/production/uploads/posts/apache-mesos-survey-2016.png" \
@@ -34,7 +34,7 @@ LABEL org.opencontainers.image.title="Apache Mesos (unofficial)" \
     com.docker.extension.detailed-description="" \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.additional-urls="" \
-    com.docker.extension.changelog=""
+    com.docker.extension.changelog="https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/changelog.md" 
 
 COPY --from=builder /backend/bin/service /
 COPY docker-compose.yaml .

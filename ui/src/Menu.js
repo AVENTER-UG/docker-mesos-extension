@@ -11,6 +11,7 @@ export default function MainMenu() {
   const [expanded, setExpanded] = useState(false);  
   const ddClient = createDockerDesktopClient();   
 
+
   const handleExpand = () => {
     setExpanded(!expanded);
   }  

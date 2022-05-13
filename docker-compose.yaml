@@ -5,3 +5,4 @@ services:
     privileged: true
     ports:
       - 5050:5050
+      - 2181:2181

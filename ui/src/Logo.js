@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import logo from './mesos_logo.png';
+import logo from './images/aventer.png';
 
 export interface LogoProps {
   onClick: () => void;
@@ -22,7 +22,6 @@ export default function Logo(props: LogoProps) {
   return (
     <Box style={{ textAlign: 'center', marginBottom: '20px' }}>
       <Box style={iconContainer}>
-        <img src={logo} style={logoStyle} />
       </Box>
     </Box>
   );

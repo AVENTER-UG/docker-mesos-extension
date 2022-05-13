@@ -24,17 +24,40 @@ COPY ui /ui
 RUN npm run build
 
 FROM alpine
-LABEL org.opencontainers.image.title="Docker Extension for Apache Mesos" \
+LABEL org.opencontainers.image.title="Workload for Apache Mesos" \
     org.opencontainers.image.description="This Docker Extension enables you run a local Apache Mesos cluster." \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://assets.d2iq.com/production/uploads/posts/apache-mesos-survey-2016.png" \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
-    com.docker.extension.screenshots="" \
-    com.docker.extension.detailed-description="" \
+    com.docker.extension.detailed-description="\    
+    <p>This Docker Desktop Extension enables developers who are working with Apache Mesos to deploy and test their \
+      applications with ease.</p> \
+    <p> \
+      <h3>What it is for:</h3> \
+      These Docker Extension should help you to run, test and develope Frameworks for Apache Mesos. \
+    </p> \
+    <p> \
+      <h3>What it does not: </h3> \
+      It does not include any kind of frameworks (like Marathon or M3s). You are not able to run workload out of \
+      the box. But there are a lot of frameworks outside, that help you to bring your software and/or containers\
+      up and running under Apache Mesos.\
+    </p> \
+    <p> \
+      <h3>Features:</h3> \
+      <ul> \
+        <li>Access to the Apache Mesos UI</li>\
+        <li>Support Docker containers</li> \
+        <li>Access to the Mesos Master API (Port 5050)</li> \
+        <li>Access to Apache Mesos Zookeeper (Port 2181)</li> \
+      </ul> \
+    </p> " \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
-    com.docker.extension.additional-urls="" \
-    com.docker.extension.changelog="https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/changelog.md" 
+    com.docker.extension.changelog=" \
+    <p> \
+      <h3>v0.1.0</h3> \
+      <ul><li>First inn</li></ul> \
+    </p> "
 
 COPY --from=builder /backend/bin/service /
 COPY docker-compose.yaml .

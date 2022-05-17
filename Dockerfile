@@ -28,7 +28,7 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     org.opencontainers.image.description="\"Mini Cluster\" enables you run a local Apache Mesos cluster." \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
-    com.docker.desktop.extension.icon="https://assets.d2iq.com/production/uploads/posts/apache-mesos-survey-2016.png" \
+    com.docker.desktop.extension.icon="https://www.aventer.biz/assets/images/products/minicluster.svg" \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.detailed-description="\    
     <p>\"Mini Cluster\" enables developers who are working with Apache Mesos to deploy and test their \

@@ -1,5 +1,5 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=latest
+TAG?=0.1.0
 
 BUILDER=buildx-multi-arch
 
@@ -25,6 +25,10 @@ install: build ## Install the extension
 update: build ## Update the extension
 	echo $(CHANGELOG)
 	docker extension update -f $(IMAGE):$(TAG)
+
+uninstall: ## Uninstall the extension
+	echo $(CHANGELOG)
+	docker extension uninstall $(IMAGE):$(TAG)
 
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host

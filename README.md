@@ -10,7 +10,7 @@ See API doc here: https://github.com/docker/extensions-sdk/tree/main/docs/dev/ap
 - Build with `make build`
 - Install extension with `make install`
 - Update extension with `make update`
-- Uninstall extension with `make uninstall-extension`
+- Uninstall extension with `make uninstall`
 
 ## UI Development
 

@@ -22,7 +22,7 @@ export default function Logo(props: LogoProps) {
   return (
     <Box style={{ textAlign: 'center', marginBottom: '20px' }}>
       <Box style={iconContainer}>
-        <img src={logo} style={logoStyle} />
+        <img src={logo} style={logoStyle} alt="Mini Cluster Logo"/>
       </Box>
     </Box>
   );

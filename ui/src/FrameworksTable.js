@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTable } from 'react-table';
 
-export default function TasksTable({tasks}) {
+export default function FrameworksTable({frameworks}) {
   
-  const data = tasks
+  const data = frameworks
 
   const columns = React.useMemo(
       () => [
@@ -16,8 +16,12 @@ export default function TasksTable({tasks}) {
           accessor: 'name',
         },
         {
-          Header: 'State',
-          accessor: 'state', 
+          Header: 'URL',
+          accessor: 'webui_url', 
+        },
+        {
+          Header: 'Active',
+          accessor: d => d.active.toString()
         },
       ],
       []

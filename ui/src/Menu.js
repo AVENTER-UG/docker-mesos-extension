@@ -10,6 +10,17 @@ import Frameworks from "./Frameworks";
 export default function MainMenu() {
   const [tasks, setTasks] = useState(false);  
   const [frameworks, setFrameworks] = useState(false);  
+
+  const showTasks = () => {
+    setTasks(!tasks);
+    setFrameworks(false);
+  };
+
+  const showFrameworks = () => {
+    setTasks(false);
+    setFrameworks(!frameworks);
+  };
+
   
   return (
     <>
@@ -18,12 +29,12 @@ export default function MainMenu() {
           action={
             <>
               <Tooltip title="Show Tasks" placement='bottom-end' >
-                <IconButton onClick={() => setTasks(!tasks)}>
+                <IconButton onClick={() => showTasks()} >
                   <MesosTasksIcon />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Show Frameworks" placement='bottom-end' >
-                <IconButton onClick={() => setFrameworks(!frameworks)}>
+                <IconButton onClick={() => showFrameworks()}>
                   <MesosFrameworksIcon />
                 </IconButton>
               </Tooltip>

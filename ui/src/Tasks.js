@@ -26,7 +26,10 @@ export default function Data(props: DataProps) {
       <Box>
         <div className="tasks">
         {loading ? (<h4>Loading...</h4>) :
-          <TasksTable tasks={tasks}/>
+          <div>
+            <p></p>
+            <TasksTable tasks={tasks}/>
+          </div>
         }    
         </div>    
       </Box>

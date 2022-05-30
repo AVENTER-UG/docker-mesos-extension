@@ -25,7 +25,7 @@ export default function Logo(props: LogoProps) {
         <img src={logo} style={logoStyle} alt="Mini Cluster Logo"/>
       </Box>
       <Typography variant="h6" component="div">
-        Mini Cluster is an Apache Mesos® cluster. It's an easy way to test and build Apache Mesos® frameworks.
+        Mini Cluster is an easy way to test frameworks for Apache Mesos®.
       </Typography>    
     </Box>
   );

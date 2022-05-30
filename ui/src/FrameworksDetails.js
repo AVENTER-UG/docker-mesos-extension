@@ -67,9 +67,6 @@ export default function FrameworksDetails({show, data}) {
     }
   }
 
-
-  console.log(data);
-
   return (
     <div>
       <BootstrapDialog
@@ -77,7 +74,6 @@ export default function FrameworksDetails({show, data}) {
         aria-labelledby="customized-dialog-title"
         open={open}    
         maxWidth="lg"
-        fullWidth="true"
       >
         <DialogTitle sx={{ m: 0, p: 2 }}>
           <IconButton

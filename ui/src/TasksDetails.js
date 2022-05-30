@@ -1,4 +1,3 @@
-import * as React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -15,6 +14,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { useState, useEffect } from 'react';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -27,7 +27,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 
 export default function TasksDetails({show, data}) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -67,16 +67,11 @@ export default function TasksDetails({show, data}) {
     }
   }
 
-
-  console.log(data);
-
   return (
-    <div>
       <BootstrapDialog
         onClose={handleClose}
         open={open}   
         maxWidth="lg"
-        fullWidth="true"
       >
         <DialogTitle>
           <IconButton
@@ -116,6 +111,5 @@ export default function TasksDetails({show, data}) {
           </Table>
         </DialogContent>
       </BootstrapDialog>
-    </div>
   );
 }

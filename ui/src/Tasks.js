@@ -13,7 +13,6 @@ export default function Data(props: DataProps) {
     const response = await fetch("http://localhost:5050/tasks?order=dsc&limit=-1");
     const data = await response.json();
     setTasks(data.tasks);
-    console.log(data);
     setLoading(false);
   };  
 

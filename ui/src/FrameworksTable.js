@@ -11,12 +11,12 @@ import { useState } from 'react';
 
 
 export default function FrameworksTable({frameworks, title}) {
-  const [details, setDetails] = useState(false);  
+  const [details, setDetails] = useState({id: "", show: false});  
  
   const data = frameworks;
 
-  const showDetails = () => {
-    setDetails(!details);
+  const showDetails = (id) => {
+    setDetails({[id]: !details[id] })
   };
 
   return (
@@ -48,10 +48,8 @@ export default function FrameworksTable({frameworks, title}) {
                 <TableCell>{row.principal}</TableCell>
                 <TableCell>{row.active.toString()}</TableCell>
                 <TableCell align="right">
-                  <ShowFramework variant="outlined" onClick={() => showDetails()}>
-                    Open dialog
-                  </ShowFramework>
-                 {details && (<FrameworksDetails show="{!details}" data={row}/>)}
+                  <ShowFramework variant="outlined" onClick={(event) => showDetails(row.id)}></ShowFramework>
+                 {details[row.id] && (<FrameworksDetails show="{details[row.id]}" data={row}/>)}
                 </TableCell>
               </TableRow>
             ))}

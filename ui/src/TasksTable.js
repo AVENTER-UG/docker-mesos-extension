@@ -11,13 +11,18 @@ import { useState, useEffect } from 'react';
 
 
 export default function TasksTable({tasks}) {
-  const [details, setDetails] = useState(false);  
-  
+  const [details, setDetails] = useState([]);  
+    
   const data = tasks
 
-  const showDetails = () => {
-    setDetails(!details);
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
+  const showDetails = (id) => {
+    setDetails({[id]: !details[id] })
   };
+
 
   return (
     <TableContainer component={Paper}>
@@ -45,8 +50,8 @@ export default function TasksTable({tasks}) {
               <TableCell>{row.framework_id}</TableCell>
               <TableCell>{row.state.toString()}</TableCell>
               <TableCell align="right">
-                <ShowTask variant="outlined" onClick={() => showDetails()}></ShowTask>
-               {details && (<TasksDetails show="{!details}" data={row}/>)}
+                <ShowTask variant="outlined" onClick={(event) => showDetails(row.id)}></ShowTask>
+               {details[row.id] ? (<TasksDetails id={row.id} visible={details[row.id]} data={row}/>) : null}
               </TableCell>
             </TableRow>
           ))}

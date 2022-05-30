@@ -15,7 +15,6 @@ export default function Data(props: DataProps) {
     const data = await response.json();
     setFrameworks(data.frameworks);
     setCompleted(data.completed_frameworks);
-    console.log(data);
     setLoading(false);
   };  
 

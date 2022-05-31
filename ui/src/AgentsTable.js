@@ -6,7 +6,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import AgentsDetails from './dialogs/detail.js';
-import ShowAgent from '@mui/icons-material/OpenInNew';
 import { useState } from 'react';
 import * as React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';

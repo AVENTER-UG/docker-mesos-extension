@@ -3,10 +3,7 @@ import { useState, useEffect } from 'react';
 
 export default function ClusterInfo() {
   const [loading, setLoading] = useState(false);  
-  const [state, setState] = useState([]);
   const [stateData, setStateData] = useState([]);
-
-  var data;
 
   // Function to get Apache Mesos Tasks
   const getMesosState = async () => {
@@ -15,7 +12,6 @@ export default function ClusterInfo() {
     const response = await fetch("http://localhost:5050/state");
     const data = await response.json();
     setStateData(data);
-    console.log(data);
     setLoading(false);
   };  
 
@@ -29,7 +25,7 @@ export default function ClusterInfo() {
         <div>
           <Box><b>Server:</b> {stateData.hostname}</Box>
           <Box><b>Leader:</b> {stateData.leader}</Box>
-          <Box><b>Version:</b> {stateData.version}</Box>
+          <Box><b>Version:</b> Apache Mesos {stateData.version}</Box>
         </div>
       }    
     </Box>

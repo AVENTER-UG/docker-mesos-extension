@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TasksDetails from './TasksDetails.js';
 import ShowTask from '@mui/icons-material/OpenInNew';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 export default function TasksTable({tasks}) {
@@ -15,14 +15,9 @@ export default function TasksTable({tasks}) {
     
   const data = tasks
 
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
-
   const showDetails = (id) => {
-    setDetails({[id]: !details[id] })
+    setDetails({[id]: !details[id] });
   };
-
 
   return (
     <TableContainer component={Paper}>
@@ -51,7 +46,7 @@ export default function TasksTable({tasks}) {
               <TableCell>{row.state.toString()}</TableCell>
               <TableCell align="right">
                 <ShowTask variant="outlined" onClick={(event) => showDetails(row.id)}></ShowTask>
-               {details[row.id] ? (<TasksDetails id={row.id} visible={details[row.id]} data={row}/>) : null}
+                {details[row.id] ? (<TasksDetails key={row.id} show={details[row.id]} data={row}/>) : null}
               </TableCell>
             </TableRow>
           ))}

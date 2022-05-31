@@ -1,31 +1,22 @@
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { useState } from 'react';
+import { styled } from '@mui/material/styles';
 
-export default function TasksDetails({show, data, title}) {
-  const [open, setOpen] = useState(true);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const cssTitle = {
-    paddingLeft: "30px",
-    fontWeight: "bold"
-  }
+export default function TasksDetails({data}) {
 
   const cssHeader = {
     fontWeight: "bold",
     width: "100px",
     verticalAlign: "top"
-  }
+  };
+
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    'td': {
+      borderBottom: "0px",
+    },
+  }));  
 
   const getValue = (val) => {
     if (typeof val === 'object') {
@@ -50,43 +41,19 @@ export default function TasksDetails({show, data, title}) {
     }
   }
 
+
   return (
-      <Dialog
-        onClose={handleClose}
-        open={open}   
-        maxWidth="lg"
-      >
-        <DialogTitle>
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <div style={cssTitle}>
-         {title}: {data.id}
-        </div>
-        <DialogContent dividers>
-          <Table sx={{ minWidth: 650 }} size="small">
-            <TableBody>
-            {
-              Object.entries(data).map(([key, value]) => (
-                <TableRow key={key}>
-                  <TableCell style={cssHeader}>{key}:</TableCell>
-                  <TableCell>{getValue(value)}</TableCell>
-                </TableRow>
-              ))
-            }    
-            </TableBody>
-          </Table>
-        </DialogContent>
-      </Dialog>
+     <Table sx={{ minWidth: 650 }} size="small">
+       <TableBody>
+       {
+         Object.entries(data).map(([key, value]) => (
+           <StyledTableRow key={key}>
+             <TableCell style={cssHeader}>{key}:</TableCell>
+             <TableCell>{getValue(value)}</TableCell>
+           </StyledTableRow>
+         ))
+       }    
+       </TableBody>
+   </Table>
   );
 }

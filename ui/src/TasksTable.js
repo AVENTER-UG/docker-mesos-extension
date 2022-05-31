@@ -6,17 +6,52 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TasksDetails from './dialogs/detail.js';
-import ShowTask from '@mui/icons-material/OpenInNew';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 import { useState } from 'react';
+import * as React from 'react';
 
 
 export default function TasksTable({tasks}) {
-  const [details, setDetails] = useState([]);  
-    
   const data = tasks
 
-  const showDetails = (id) => {
-    setDetails({[id]: !details[id] });
+  const Row = ({row}) =>  {
+    const [open, setOpen] = useState(false);  
+
+    return (
+        <React.Fragment>
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+
+             <TableCell>
+               <IconButton
+                 aria-label="expand row"
+                 size="small"
+                 onClick={() => setOpen(!open)}
+               >
+                 {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+               </IconButton>
+             </TableCell>            
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.framework_id}</TableCell>
+              <TableCell align="right">{row.state.toString()}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell style={{ paddingBottom: 0, paddingTop: 0, paddingLeft: "100px" }} colSpan={5}>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                   <TasksDetails key={row.id} data={row} />
+               </Collapse>
+              </TableCell>            
+            </TableRow>
+         </React.Fragment>
+    );
   };
 
   return (
@@ -25,30 +60,16 @@ export default function TasksTable({tasks}) {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>Task ID</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Framework ID</TableCell>
-            <TableCell>State</TableCell>
-            <TableCell align="right">&nbsp;</TableCell>
+            <TableCell align="right">State</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row) => (
-            <TableRow
-              key={row.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.framework_id}</TableCell>
-              <TableCell>{row.state.toString()}</TableCell>
-              <TableCell align="right">
-                <ShowTask variant="outlined" onClick={(event) => showDetails(row.id)}></ShowTask>
-                {details[row.id] ? (<TasksDetails key={row.id} show={details[row.id]} data={row} title="Show Task"/>) : null}
-              </TableCell>
-            </TableRow>
+            <Row key={row.id} row={row} />
           ))}
         </TableBody>
       </Table>

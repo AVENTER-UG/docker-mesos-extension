@@ -8,16 +8,54 @@ import Paper from '@mui/material/Paper';
 import FrameworksDetails from './dialogs/detail.js';
 import ShowFramework from '@mui/icons-material/OpenInNew';
 import { useState } from 'react';
+import * as React from 'react';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
 
 
 export default function FrameworksTable({frameworks, title}) {
-  const [details, setDetails] = useState({id: "", show: false});  
- 
   const data = frameworks;
 
-  const showDetails = (id) => {
-    setDetails({[id]: !details[id] })
+  const Row = ({row}) =>  {
+    const [open, setOpen] = useState(false);  
+
+    return (
+        <React.Fragment>
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+
+             <TableCell>
+               <IconButton
+                 aria-label="expand row"
+                 size="small"
+                 onClick={() => setOpen(!open)}
+               >
+                 {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+               </IconButton>
+             </TableCell>            
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.role}</TableCell>
+              <TableCell>{row.principal}</TableCell>
+              <TableCell>{row.active.toString()}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell style={{ paddingBottom: 0, paddingTop: 0, paddingLeft: "100px" }} colSpan={6}>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                   <FrameworksDetails key={row.id} data={row} />
+               </Collapse>
+              </TableCell>            
+            </TableRow>
+         </React.Fragment>
+    );
   };
+  
 
   return (
     <div>
@@ -35,24 +73,9 @@ export default function FrameworksTable({frameworks, title}) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.id}
-                </TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.role}</TableCell>
-                <TableCell>{row.principal}</TableCell>
-                <TableCell>{row.active.toString()}</TableCell>
-                <TableCell align="right">
-                  <ShowFramework variant="outlined" onClick={(event) => showDetails(row.id)}></ShowFramework>
-                 {details[row.id] && (<FrameworksDetails show="{details[row.id]}" data={row} title="Show Framework"/>)}
-                </TableCell>
-              </TableRow>
-            ))}
+          {data.map((row) => (
+            <Row key={row.id} row={row} />
+          ))}
           </TableBody>
         </Table>
       </TableContainer>    

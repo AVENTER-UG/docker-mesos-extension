@@ -5,15 +5,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import TasksDetails from './dialogs/detail.js';
-import ShowTask from '@mui/icons-material/OpenInNew';
+import AgentsDetails from './dialogs/detail.js';
+import ShowAgent from '@mui/icons-material/OpenInNew';
 import { useState } from 'react';
 
 
-export default function TasksTable({tasks}) {
+export default function AgentsTable({agents}) {
   const [details, setDetails] = useState([]);  
     
-  const data = tasks
+  const data = agents;
 
   const showDetails = (id) => {
     setDetails({[id]: !details[id] });
@@ -21,14 +21,14 @@ export default function TasksTable({tasks}) {
 
   return (
     <TableContainer component={Paper}>
-      <h4>Tasks</h4>
+      <h4>Agents</h4>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Task ID</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Framework ID</TableCell>
-            <TableCell>State</TableCell>
+            <TableCell>Agent ID</TableCell>
+            <TableCell>Hostname</TableCell>
+            <TableCell>Mesos Version</TableCell>
+            <TableCell>Active</TableCell>
             <TableCell align="right">&nbsp;</TableCell>
           </TableRow>
         </TableHead>
@@ -41,12 +41,12 @@ export default function TasksTable({tasks}) {
               <TableCell component="th" scope="row">
                 {row.id}
               </TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.framework_id}</TableCell>
-              <TableCell>{row.state.toString()}</TableCell>
+              <TableCell>{row.hostname}</TableCell>
+              <TableCell>{row.version}</TableCell>
+              <TableCell>{row.active.toString()}</TableCell>
               <TableCell align="right">
-                <ShowTask variant="outlined" onClick={(event) => showDetails(row.id)}></ShowTask>
-                {details[row.id] ? (<TasksDetails key={row.id} show={details[row.id]} data={row} title="Show Task"/>) : null}
+                <ShowAgent variant="outlined" onClick={(event) => showDetails(row.id)}></ShowAgent>
+                {details[row.id] ? (<AgentsDetails key={row.id} show={details[row.id]} data={row} title="Show Agent"/>) : null}
               </TableCell>
             </TableRow>
           ))}

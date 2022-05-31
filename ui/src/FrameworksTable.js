@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import FrameworksDetails from './FrameworksDetails.js';
+import FrameworksDetails from './dialogs/detail.js';
 import ShowFramework from '@mui/icons-material/OpenInNew';
 import { useState } from 'react';
 
@@ -49,7 +49,7 @@ export default function FrameworksTable({frameworks, title}) {
                 <TableCell>{row.active.toString()}</TableCell>
                 <TableCell align="right">
                   <ShowFramework variant="outlined" onClick={(event) => showDetails(row.id)}></ShowFramework>
-                 {details[row.id] && (<FrameworksDetails show="{details[row.id]}" data={row}/>)}
+                 {details[row.id] && (<FrameworksDetails show="{details[row.id]}" data={row} title="Show Framework"/>)}
                 </TableCell>
               </TableRow>
             ))}

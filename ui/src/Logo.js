@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import logo from './images/miniclusterlogo.png'
 
 export interface LogoProps {
@@ -22,8 +22,11 @@ export default function Logo(props: LogoProps) {
   return (
     <Box style={{ textAlign: 'center', marginBottom: '20px' }}>
       <Box style={iconContainer}>
-        <img src={logo} style={logoStyle} />
+        <img src={logo} style={logoStyle} alt="Mini Cluster Logo"/>
       </Box>
+      <Typography variant="h6" component="div">
+        Mini Cluster is an easy way to test frameworks for Apache Mesos®.
+      </Typography>    
     </Box>
   );
 }

@@ -1,5 +1,5 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=latest
+TAG?=0.1.0
 
 BUILDER=buildx-multi-arch
 
@@ -20,11 +20,24 @@ build: ## Build service image to be deployed as a desktop extension
 	docker build --tag=$(IMAGE):$(TAG) .
 
 install: build ## Install the extension
-	docker extension install $(IMAGE):$(TAG)
+	docker extension install -f $(IMAGE):$(TAG) 
 
 update: build ## Update the extension
 	echo $(CHANGELOG)
 	docker extension update -f $(IMAGE):$(TAG)
+
+yarn:
+	cd ui; yarn install; yarn start
+
+set-ui:
+	docker extension dev ui-source avhost/docker-mesos-extension http://localhost:3000
+
+unset-ui:
+	docker extension dev reset avhost/docker-mesos-extension
+
+uninstall: ## Uninstall the extension
+	echo $(CHANGELOG)
+	docker extension uninstall $(IMAGE):$(TAG)
 
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host

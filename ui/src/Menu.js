@@ -1,43 +1,64 @@
 import { useState } from 'react';
-import { Card, CardHeader, CardContent, IconButton, List, ListItem, ListItemText, Box, Button, Tooltip } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
+import { Card, CardHeader, CardContent, IconButton, Tooltip } from "@mui/material";
 import ExpandLessRounded from '@mui/icons-material/ExpandLessRounded';
 import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
-import { EditRounded } from '@mui/icons-material';
-import { LoginRounded } from '@mui/icons-material';
-import { createDockerDesktopClient } from "@docker/extension-api-client";
+import MesosTasksIcon from '@mui/icons-material/Apps';
+import MesosFrameworksIcon from '@mui/icons-material/AutoAwesomeMotion';
+import MesosAgentsIcon from '@mui/icons-material/Storage';
+import Tasks from "./Tasks";
+import Agents from "./Agents";
+import Frameworks from "./Frameworks";
+import ClusterInfo from "./ClusterInfo";
 
 export default function MainMenu() {
-  const [expanded, setExpanded] = useState(false);  
-  const ddClient = createDockerDesktopClient();   
-
+  const [tasks, setTasks] = useState(false);  
+  const [frameworks, setFrameworks] = useState(false);  
+  const [agents, setAgents] = useState(false);  
+  const [expanded, setExpanded] = useState(false);
 
   const handleExpand = () => {
     setExpanded(!expanded);
-  }  
+  }    
 
-  const openMesosUI = () => {
-    ddClient.host.openExternal("http://localhost:5050");
-  }  
+  const showTasks = () => {
+    setTasks(!tasks);
+    setFrameworks(false);
+    setAgents(false);
+  };
 
-  const styles = {
-    link: {
-      color: '#00bcd4',
-    }
-  }
+  const showFrameworks = () => {
+    setTasks(false);
+    setFrameworks(!frameworks);
+    setAgents(false);
+  };
 
+  const showAgents = () => {
+    setTasks(false);
+    setFrameworks(false);
+    setAgents(!agents);
+  };
+
+  
   return (
     <>
       <Card>
         <CardHeader
           action={
             <>
-              <Tooltip title='Open Mesos UI in Browser' placement='bottom-end'>
-                <IconButton
-                  aria-label="action"
-                  onClick={openMesosUI}>
-                  <LoginRounded />
+              <Tooltip title="Show Tasks" placement='bottom-end' >
+                <IconButton onClick={() => showTasks()} >
+                  <MesosTasksIcon />
                 </IconButton>
+              </Tooltip>
+              <Tooltip title="Show Frameworks" placement='bottom-end' >
+                <IconButton onClick={() => showFrameworks()}>
+                  <MesosFrameworksIcon />
+                </IconButton>            
+              </Tooltip>
+              <Tooltip title="Show Agents" placement='bottom-end' >
+                <IconButton onClick={() => showAgents()}>
+                  <MesosAgentsIcon />
+                </IconButton>            
               </Tooltip>
               <Tooltip title={expanded ? "Collapse details" : "Expand details"} placement='bottom-end' >
                 <IconButton
@@ -49,16 +70,20 @@ export default function MainMenu() {
                     <ExpandMoreRounded />
                   )}
                 </IconButton>
-              </Tooltip>
+              </Tooltip>            
             </>
           }
           title={
-            "Mini Mesos"
+            "Mini Cluster"
           }
         />
         <CardContent hidden={!expanded} sx={{ paddingTop: "0px" }}>
-        </CardContent>
-      </Card >
+          <ClusterInfo/>
+        </CardContent>    
+      </Card >    
+     {frameworks && <Frameworks />}
+     {tasks && <Tasks />}
+     {agents && <Agents />}
     </>
   );
 }

@@ -55,6 +55,15 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.changelog=" \
     <p> \
+      <h3>v0.2.0</h3> \
+      <ul>\
+        <li>Open port to the mesos agent</li>\
+        <li>Add simple webui functionality</li>\ 
+        <li>Update mini Apache Mesos to version 1.11.0-0.2.0</li>\
+        <li>Add show details of frameworks, tasks and agents</li>\
+      </ul>\
+    </p> \
+    <p> \
       <h3>v0.1.0</h3> \
       <ul><li>First inn</li></ul> \
     </p> "

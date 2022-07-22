@@ -5,8 +5,10 @@ import ExpandMoreRounded from '@mui/icons-material/ExpandMoreRounded';
 import MesosTasksIcon from '@mui/icons-material/Apps';
 import MesosFrameworksIcon from '@mui/icons-material/AutoAwesomeMotion';
 import MesosAgentsIcon from '@mui/icons-material/Storage';
+import HomeIcon from '@mui/icons-material/Home';
 import Tasks from "./Tasks";
 import Agents from "./Agents";
+import Home from "./Home";
 import Frameworks from "./Frameworks";
 import ClusterInfo from "./ClusterInfo";
 
@@ -15,6 +17,7 @@ export default function MainMenu() {
   const [frameworks, setFrameworks] = useState(false);  
   const [agents, setAgents] = useState(false);  
   const [expanded, setExpanded] = useState(false);
+  const [home, setHome] = useState(true);
 
   const handleExpand = () => {
     setExpanded(!expanded);
@@ -24,18 +27,28 @@ export default function MainMenu() {
     setTasks(!tasks);
     setFrameworks(false);
     setAgents(false);
+    setHome(false);
   };
 
   const showFrameworks = () => {
     setTasks(false);
     setFrameworks(!frameworks);
     setAgents(false);
+    setHome(false);
   };
 
   const showAgents = () => {
     setTasks(false);
     setFrameworks(false);
     setAgents(!agents);
+    setHome(false);
+  };
+
+  const showHome = () => {
+    setTasks(false);
+    setFrameworks(false);
+    setAgents(false);
+    setHome(!home);
   };
 
   
@@ -45,6 +58,11 @@ export default function MainMenu() {
         <CardHeader
           action={
             <>
+              <Tooltip title="Home" placement='bottom-end' >
+                <IconButton onClick={() => showHome()} >
+                  <HomeIcon />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Show Tasks" placement='bottom-end' >
                 <IconButton onClick={() => showTasks()} >
                   <MesosTasksIcon />
@@ -84,6 +102,7 @@ export default function MainMenu() {
      {frameworks && <Frameworks />}
      {tasks && <Tasks />}
      {agents && <Agents />}
+     {home && <Home />}
     </>
   );
 }

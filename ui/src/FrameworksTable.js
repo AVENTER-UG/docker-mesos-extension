@@ -42,7 +42,7 @@ export default function FrameworksTable({frameworks, title}) {
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.role}</TableCell>
               <TableCell>{row.principal}</TableCell>
-              <TableCell>{row.active.toString()}</TableCell>
+              <TableCell align="right">{row.active.toString()}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell style={{ paddingBottom: 0, paddingTop: 0, paddingLeft: "100px" }} colSpan={6}>
@@ -58,17 +58,17 @@ export default function FrameworksTable({frameworks, title}) {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+    <TableContainer component={Paper}>
         <h4>{title}</h4>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
+              <TableCell></TableCell>
               <TableCell>Framework ID</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Role</TableCell>
               <TableCell>Principal</TableCell>
-              <TableCell>Active</TableCell>
-              <TableCell align="right">&nbsp;</TableCell>
+              <TableCell align="right">Active</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

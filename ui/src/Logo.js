@@ -8,25 +8,38 @@ export interface LogoProps {
 
 export default function Logo(props: LogoProps) {
 
-  const iconContainer = {
-    height: 60,
-    marginBottom: '3em',
-    marginTop: '2em',
+  const logoContainer = {
+    height: 40,
+    marginBottom: '0.5em',
+    marginTop: '1em',
     width: '100%',
+    float: 'right',
+    fontSize: '20px'
   };
 
-  const logoStyle = {
-    maxHeight: '100%',
-    maxWidth: '100%'
+  const logoImgStyle = {
+    maxHeight: '40px',
+    display: 'inline',
+    verticalAlign: 'middle',
+    paddingRight: '10px'
   }
+
+  const logoTextStyle = {
+    maxHeight: '40px',
+    maxWidth: '100px',
+  }
+
+  const underTextStyle = {
+    color: 'gray',
+    fontSize: '13px'
+  }
+
   return (
-    <Box style={{ textAlign: 'center', marginBottom: '20px' }}>
-      <Box style={iconContainer}>
-        <img src={logo} style={logoStyle} alt="Mini Cluster Logo"/>
+    <Box style={{ textAlign: 'left', marginBottom: '20px' }}>
+      <Box style={logoContainer}>
+        <img src={logo} style={logoImgStyle} alt="Mini Cluster Logo"/>Mini Cluster
       </Box>
-      <Typography variant="h6" component="div">
-        Mini Cluster is an easy way to test frameworks for Apache Mesos®.
-      </Typography>    
+      <div style={underTextStyle}> Mini Cluster is an easy way to test frameworks for Apache Mesos®.</div>
     </Box>
   );
 }

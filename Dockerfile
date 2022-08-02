@@ -55,6 +55,13 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.changelog=" \
     <p> \
+      <h3>v0.3.0</h3> \
+      <ul> \
+        <li>Change desktop extension UI</li> \
+        <li>Add Home button with a small example of how to deploy workload</li> \
+      </ul> \
+    </p> \
+    <p> \
       <h3>v0.2.0</h3> \
       <ul>\
         <li>Open port to the mesos agent</li>\

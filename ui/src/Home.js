@@ -29,7 +29,9 @@ export default function Data(props: DataProps) {
           <ul>
             <li>Checkout 'mesos-compose': <pre>git clone https://github.com/AVENTER-UG/mesos-compose.git</pre></li>
             <li>Run a Redis Database: <pre>docker run --rm --name minicluster-redis -d -p 6379:6379 redis</pre></li>
-            <li>Run 'mesos-compose': <pre>PORTRANGE_TO=31005 LOGLEVEL=debug go run . </pre></li>
+            <li>Run 'mesos-compose': 
+                <pre>cd mesos-compose</pre>
+                <pre>PORTRANGE_TO=31005 LOGLEVEL=debug go run . </pre></li>
             <li>Deploy workload: <pre>curl -k -X PUT http://user:password@localhost:10000/api/compose/v0/test --data-binary @docs/example/test-extension.yaml</pre></li>
             <li>Now we can check unter "SHOW TASKS" in the UI if the container is running and which random network port it got.</li>
           </ul>

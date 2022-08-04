@@ -29,6 +29,7 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://www.aventer.biz/assets/images/products/minicluster.svg" \
+    com.docker.extension.screenshots="" \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.detailed-description="\    
     <p>\"Mini Cluster\" enables developers who are working with Apache Mesos to deploy and test their \

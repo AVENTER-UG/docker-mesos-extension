@@ -91,9 +91,6 @@ export default function MainMenu() {
               </Tooltip>            
             </>
           }
-          title={
-            "Mini Cluster"
-          }
         />
         <CardContent hidden={!expanded} sx={{ paddingTop: "0px" }}>
           <ClusterInfo/>

@@ -29,9 +29,10 @@ export default function Logo(props: LogoProps) {
     maxWidth: '100px',
   }
 
+
   const underTextStyle = {
-    color: 'gray',
-    fontSize: '13px'
+    color: '#ccd1d1',
+    fontSize: '13px',
   }
 
   return (

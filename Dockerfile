@@ -29,14 +29,15 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://www.aventer.biz/assets/images/products/minicluster.svg" \
-    com.docker.extension.screenshots="" \
+    com.docker.extension.additional-urls='[{"title":"Support","url":"https://github.com/AVENTER-UG/docker-mesos-extension/issues"}]' \
+    com.docker.extension.screenshots='[{"alt":"View Tasks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task.png"}, {"alt":"View Frameworks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework.png"}]' \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.detailed-description="\    
     <p>\"Mini Cluster\" enables developers who are working with Apache Mesos to deploy and test their \
       Apache Mesos applications with ease.</p> \
     <p> \
       <h3>What it is for:</h3> \
-      These Docker Extension should help you to run, test and develope Frameworks for Apache Mesos. \
+      These Docker Extension should help you to run, test and develop Frameworks for Apache Mesos. \
     </p> \
     <p> \
       <h3>What it does not: </h3> \
@@ -65,7 +66,7 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     <p> \
       <h3>v0.2.0</h3> \
       <ul>\
-        <li>Open port to the mesos agent</li>\
+        <li>Open port to the Apache Mesos Agent</li>\
         <li>Add simple webui functionality</li>\ 
         <li>Update mini Apache Mesos to version 1.11.0-0.2.0</li>\
         <li>Add show details of frameworks, tasks and agents</li>\

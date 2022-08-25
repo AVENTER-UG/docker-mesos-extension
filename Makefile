@@ -1,7 +1,7 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=0.3.0
+TAG?=0.3.1
 
-BUILDER=buildx-multi-arch
+BUILDER=qemu-user-static
 
 STATIC_FLAGS=CGO_ENABLED=0
 LDFLAGS="-s -w"

@@ -57,6 +57,12 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.changelog=" \
     <p> \
+      <h3>v0.3.1</h3> \
+      <ul> \
+        <li>Add support for arm64</li> \
+      </ul> \
+    </p> \
+    <p> \
       <h3>v0.3.0</h3> \
       <ul> \
         <li>Change desktop extension UI</li> \

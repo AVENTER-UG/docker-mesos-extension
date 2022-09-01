@@ -1,7 +1,7 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=0.3.1
+TAG?=0.3.2
 
-BUILDER=qemu-user-static
+BUILDER=default
 
 STATIC_FLAGS=CGO_ENABLED=0
 LDFLAGS="-s -w"
@@ -46,7 +46,8 @@ validate:
 	docker extension validate avhost/docker-mesos-extension:${TAG}
 
 push: prepare-buildx ## Build & Upload extension image to hub. Do not push if tag already exists: make push-extension tag=0.1
-	docker pull $(IMAGE):$(TAG) && echo "Failure: Tag already exists" || docker buildx build --push --builder=$(BUILDER) --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
+	docker buildx create --use default
+	docker buildx build --push --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:

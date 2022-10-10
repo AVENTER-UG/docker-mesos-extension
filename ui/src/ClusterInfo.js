@@ -5,6 +5,14 @@ export default function ClusterInfo() {
   const [loading, setLoading] = useState(false);  
   const [stateData, setStateData] = useState([]);
 
+  const detailStyle = {
+    marginTop: '1em',
+    marginLeft: '1.75em',
+    width: '90%',
+    fontSize: '15px',
+    textAlign: 'left'
+  };
+
   // Function to get Apache Mesos Tasks
   const getMesosState = async () => {
     setLoading(true);
@@ -20,9 +28,9 @@ export default function ClusterInfo() {
   }, []); 
 
   return (
-    <Box style={{ textAlign: 'left', marginBottom: '20px' }}>
+    <Box style={{ textAlign: 'center', marginBottom: '20px' }}>
       {loading ? (<h4>Loading...</h4>) :
-        <div>
+        <div className='details' style={detailStyle}>
           <Box><b>Server:</b> {stateData.hostname}</Box>
           <Box><b>Leader:</b> {stateData.leader}</Box>
           <Box><b>Version:</b> Apache Mesos {stateData.version}</Box>

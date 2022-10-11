@@ -7,7 +7,7 @@ export default function Data(props: DataProps) {
 
   const homeStyle = {
     marginTop: '1em',
-    marginLeft: '3em',
+    marginLeft: '1.75em',
     width: '90%',
     fontSize: '15px',
     textAlign: 'left'

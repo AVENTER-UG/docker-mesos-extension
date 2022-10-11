@@ -1,2 +1,9 @@
 src/node_modules/**
 ui/node_modules/                  
+
+# vim files
+*.swp
+*.swo
+tags
+ctags.tmp
+[._]*.un~

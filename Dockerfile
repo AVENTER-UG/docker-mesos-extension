@@ -32,6 +32,7 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.extension.additional-urls='[{"title":"Support","url":"https://github.com/AVENTER-UG/docker-mesos-extension/issues"}]' \
     com.docker.extension.screenshots='[{"alt":"View Tasks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task.png"}, {"alt":"View Frameworks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework.png"}]' \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
+    com.docker.extension.categories="container-orchestration,cloud-development" \
     com.docker.extension.detailed-description="\    
     <p>\"Mini Cluster\" enables developers who are working with Apache Mesos to deploy and test their \
       Apache Mesos applications with ease.</p> \
@@ -52,35 +53,16 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
         <li>Support Docker containers</li> \
         <li>Access to the Mesos Master API (Port 5050)</li> \
         <li>Access to Apache Mesos Zookeeper (Port 2181)</li> \
+        <li>Include traefik Proxy</li> \
       </ul> \
     </p> " \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.changelog=" \
     <p> \
-      <h3>v0.3.1</h3> \
       <ul> \
-        <li>Add support for arm64</li> \
+        <li>Open port 9080 (bridge to 80) and 9443 (bridge to 443)</li> \
+        <li>Improve UI (Thanks to Le-Roi777)</li> \
       </ul> \
-    </p> \
-    <p> \
-      <h3>v0.3.0</h3> \
-      <ul> \
-        <li>Change desktop extension UI</li> \
-        <li>Add Home button with a small example of how to deploy workload</li> \
-      </ul> \
-    </p> \
-    <p> \
-      <h3>v0.2.0</h3> \
-      <ul>\
-        <li>Open port to the Apache Mesos Agent</li>\
-        <li>Add simple webui functionality</li>\ 
-        <li>Update mini Apache Mesos to version 1.11.0-0.2.0</li>\
-        <li>Add show details of frameworks, tasks and agents</li>\
-      </ul>\
-    </p> \
-    <p> \
-      <h3>v0.1.0</h3> \
-      <ul><li>First inn</li></ul> \
     </p> "
 
 COPY --from=builder /backend/bin/service /

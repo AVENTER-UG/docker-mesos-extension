@@ -1,3 +1,12 @@
+# v0.3.3
+
+- Open port 9080 (bridge to 80) and 9443 (bridge to 443)
+- Improve UI (Thanks to Le-Roi777)
+
+# v0.3.1
+
+- Add support for arm64
+
 # v0.3.0
 
 - Change desktop extension UI

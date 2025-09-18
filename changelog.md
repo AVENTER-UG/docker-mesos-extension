@@ -1,3 +1,9 @@
+# v0.4.0
+
+- Migrate Apache Mesos to ClusterD Version 1.11.0-0.7.1
+  ClusterD is the continued development of Apache Mesos.
+  https://github.com/m3scluster/clusterd
+
 # v0.3.3
 
 - Open port 9080 (bridge to 80) and 9443 (bridge to 443)

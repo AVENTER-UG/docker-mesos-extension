@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine AS builder
+FROM golang:1.24-alpine AS builder
 ENV CGO_ENABLED=0
 RUN apk add --update make
 WORKDIR /backend
@@ -11,7 +11,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     make bin
 
-FROM --platform=$BUILDPLATFORM node:17.7-alpine3.14 AS client-builder
+FROM --platform=$BUILDPLATFORM node:24-alpine AS client-builder
 WORKDIR /ui
 # cache packages in layer
 COPY ui/package.json /ui/package.json
@@ -60,8 +60,9 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.extension.changelog=" \
     <p> \
       <ul> \
-        <li>Open port 9080 (bridge to 80) and 9443 (bridge to 443)</li> \
-        <li>Improve UI (Thanks to Le-Roi777)</li> \
+				<li>Migrate Apache Mesos to ClusterD Version 1.11.0-0.7.1. \
+				ClusterD is the continued development of Apache Mesos.<br> \
+				https://github.com/m3scluster/clusterd</li> \
       </ul> \
     </p> "
 

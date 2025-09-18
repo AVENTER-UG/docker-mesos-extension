@@ -1,5 +1,5 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=0.3.3
+TAG?=0.4.0
 
 BUILDER=default
 
@@ -44,13 +44,12 @@ uninstall: ## Uninstall the extension
 prepare-buildx: ## Create buildx builder for multi-arch build, if not exists
 	docker buildx inspect $(BUILDER) || docker buildx create --name=$(BUILDER) --driver=docker-container --driver-opt=network=host
 
-validate: 
-	docker pull ${IMAGE}:${TAG}
+validate:
 	docker extension validate ${IMAGE}:${TAG}
 
 push: prepare-buildx ## Build & Upload extension image to hub. Do not push if tag already exists: make push-extension tag=0.1
 	docker buildx create --use default
-	docker buildx build --push --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
+	docker buildx build --push --sbom=true --provenance=true --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:

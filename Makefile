@@ -1,5 +1,5 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=0.4.0
+TAG?=1.0.0
 
 BUILDER=default
 
@@ -21,8 +21,8 @@ bin: ## Build the binary for the current platform
 build: ## Build service image to be deployed as a desktop extension
 	docker build --tag=$(IMAGE):${TAG} .
 
-install: build ## Install the extension
-	docker extension install -f $(IMAGE):$(TAG) 
+install: build ## Install or update the extension
+	@docker extension update -f $(IMAGE):$(TAG) || docker extension install -f $(IMAGE):$(TAG)
 
 update: build ## Update the extension
 	echo $(CHANGELOG)
@@ -32,10 +32,10 @@ yarn:
 	cd ui; yarn install; yarn start
 
 set-ui:
-	docker extension dev ui-source docker-mesos-extension http://localhost:3000
+	docker extension dev ui-source $(IMAGE):${TAG} http://localhost:3000
 
 unset-ui:
-	docker extension dev reset docker-mesos-extension
+	docker extension dev reset $(IMAGE):${TAG}
 
 uninstall: ## Uninstall the extension
 	echo $(CHANGELOG)
@@ -50,6 +50,9 @@ validate:
 push: prepare-buildx ## Build & Upload extension image to hub. Do not push if tag already exists: make push-extension tag=0.1
 	docker buildx create --use default
 	docker buildx build --push --sbom=true --provenance=true --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
+
+debug:
+	docker extension dev debug $(IMAGE):${TAG}
 
 help: ## Show this help
 	@echo Please specify a build target. The choices are:

@@ -10,7 +10,7 @@
     "dashboard-tab": {
       "title": "Mini Cluster",
       "src": "index.html",
-      "root": "ui",
+      "root": "/ui",
       "backend": {
         "socket": "extension-docker-mesos-extension.sock"
       }

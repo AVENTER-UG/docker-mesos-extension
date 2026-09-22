@@ -10,10 +10,10 @@ buildInputs = [
 		docker
 		docker-credential-helpers
 		trivy
-    stdenv
-    nodejs
-    yarn
-    docker
+		stdenv
+		nodejs
+		yarn
+		docker
 ];
 
 SOURCE_DATE_EPOCH = 315532800;

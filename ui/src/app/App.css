@@ -13,6 +13,8 @@
   --clusterd-card-hover-shadow: 0 4px 18px rgba(53, 112, 233, 0.2);
   --clusterd-code-background: #05070d;
   --clusterd-code-text: #b9dafa;
+  --clusterd-nav: #0e1422;
+  --clusterd-nav-text: #f3f6fb;
 }
 
 :root[data-color-mode="light"] {
@@ -29,6 +31,8 @@
   --clusterd-card-hover-shadow: 0 4px 18px rgba(53, 112, 233, 0.16);
   --clusterd-code-background: #eef3ff;
   --clusterd-code-text: #173765;
+  --clusterd-nav: #ffffff;
+  --clusterd-nav-text: #111827;
 }
 
 .App {
@@ -149,14 +153,19 @@
 
 .main-tabs {
   padding: 0 16px;
-  background: #0e1422;
-  border-top: 1px solid rgba(167, 191, 232, 0.14);
+  background: var(--clusterd-nav);
+  color: var(--clusterd-nav-text);
+  border-top: 1px solid var(--clusterd-line);
 }
 
 .main-tabs .MuiTab-root {
   min-height: 46px;
   text-transform: none;
   font-weight: 600;
+}
+
+.main-tabs .MuiTab-root:hover {
+  background: color-mix(in srgb, var(--clusterd-nav-text) 8%, transparent);
 }
 
 .cluster-hero {

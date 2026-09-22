@@ -42,8 +42,8 @@ export function createClusterTheme(mode) {
   return createTheme({
     palette: {
       mode: dark ? "dark" : "light",
-      primary: { main: "#3570e9", light: "#71b7ff" },
-      secondary: { main: "#ef5364" },
+      primary: { main: "#1d63ed", light: "#71b7ff" },
+      secondary: { main: "#1d63ed" },
       background: dark
         ? { default: "#080b14", paper: "#0e1422" }
         : { default: "#f3f6fb", paper: "#ffffff" },
@@ -63,12 +63,28 @@ export function createClusterTheme(mode) {
     components: {
       MuiAppBar: {
         styleOverrides: {
-          root: { backgroundColor: "#080b14", color: "#f3f6fb" },
+          root: {
+            backgroundColor: dark ? "#080b14" : "#ffffff",
+            color: dark ? "#f3f6fb" : "#111827",
+            borderBottom: `1px solid ${dark ? "rgba(167, 191, 232, 0.14)" : "#dce5f4"}`,
+          },
         },
       },
       MuiToolbar: {
         styleOverrides: {
-          root: { backgroundColor: "#080b14" },
+          root: {
+            minHeight: 64,
+            backgroundColor: dark ? "#080b14" : "#ffffff",
+          },
+        },
+      },
+      MuiTab: {
+        styleOverrides: {
+          root: {
+            minHeight: 48,
+            fontWeight: 600,
+            textTransform: "none",
+          },
         },
       },
     },

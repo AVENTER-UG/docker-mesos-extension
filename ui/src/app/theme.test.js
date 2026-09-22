@@ -49,5 +49,5 @@ test("creates distinct readable light and dark palettes with ClusterD accents", 
   expect(dark.palette.background.default).toBe("#080b14");
   expect(light.palette.mode).toBe("light");
   expect(light.palette.background.paper).toBe("#ffffff");
-  expect(light.palette.primary.main).toBe("#3570e9");
+  expect(light.palette.primary.main).toBe("#1d63ed");
 });

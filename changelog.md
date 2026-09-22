@@ -1,13 +1,13 @@
 # v1.0.0
 
 - Migrated the Docker Extension UI to the modern ClusterD WebUI.
-- Added a dedicated Home page with Mini ClusterD deployment instructions.
+- Added a dedicated Home page with Mini Cluster deployment instructions.
 - Added the ClusterD Overview dashboard and modern Tasks, Frameworks, Agents, Offers and Manager views.
 - Removed authentication for the Docker Extension's local HTTP ClusterD environment.
 - Synchronized the UI theme with Docker Desktop's light/dark setting.
 - Updated the navigation and menu styling to follow Docker Extension design guidelines.
 - Replaced the extension icon with the ClusterD logo.
-- Renamed Mini Cluster to Mini ClusterD and updated ClusterD messaging.
+- Kept the extension name Mini Cluster while updating its runtime and messaging to ClusterD.
 
 # v0.4.0
 

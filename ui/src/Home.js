@@ -74,18 +74,18 @@ export function MiniClusterGuide() {
     <Paper className="table-card" elevation={0} sx={{ p: 3 }}>
       <Stack spacing={2}>
         <Box>
-          <Typography className="section-title" variant="h6">Mini ClusterD</Typography>
+          <Typography className="section-title" variant="h6">Mini Cluster</Typography>
           <Typography color="text.secondary" variant="body2">
-            How to deploy workload in Mini ClusterD
+            How to deploy workload in Mini Cluster
           </Typography>
         </Box>
         <Typography>
-          <strong>Notice:</strong> &apos;Mini ClusterD&apos; is a simple single agent ClusterD installation. ClusterD is the continued development of Apache Mesos® and provides the same framework-based workload model.
+          <strong>Notice:</strong> &apos;Mini Cluster&apos; is a simple single agent ClusterD installation. ClusterD is the continued development of Apache Mesos® and provides the same framework-based workload model.
           there have to be a framework to deploy workload on it. The goal of this &apos;Docker Extension&apos; is, to give you
           (the developer) a easy way to test and develop your own framework.
         </Typography>
         <Typography>
-          There are plenty of frameworks to deploy workload on &apos;Mini ClusterD&apos;. As example we will use &apos;mesos-compose&apos;
+          There are plenty of frameworks to deploy workload on &apos;Mini Cluster&apos;. As example we will use &apos;mesos-compose&apos;
           to deploy a simple container.
         </Typography>
         <Box component="ol" sx={{ pl: 3, my: 0 }}>

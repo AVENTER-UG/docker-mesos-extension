@@ -24,17 +24,17 @@ COPY ui /ui
 RUN npm run build
 
 FROM alpine
-LABEL org.opencontainers.image.title="Mini ClusterD" \
-    org.opencontainers.image.description="Mini ClusterD enables you run a local ClusterD cluster." \
+LABEL org.opencontainers.image.title="Mini Cluster" \
+    org.opencontainers.image.description="Mini Cluster enables you run a local ClusterD cluster." \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
-    com.docker.desktop.extension.icon="https://www.aventer.biz/assets/images/products/minicluster.svg" \
+    com.docker.desktop.extension.icon="https://www.clusterd.de/assets/images/clusterd-mark.png" \
     com.docker.extension.additional-urls='[{"title":"Support","url":"https://github.com/AVENTER-UG/docker-mesos-extension/issues"}]' \
     com.docker.extension.screenshots='[{"alt":"View Tasks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task.png"}, {"alt":"View Frameworks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework.png"}]' \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.categories="container-orchestration,cloud-development" \
     com.docker.extension.detailed-description="\    
-    <p>\"Mini ClusterD\" enables developers who are working with ClusterD, the continued development of Apache Mesos, to deploy and test their \
+    <p>\"Mini Cluster\" enables developers who are working with ClusterD, the continued development of Apache Mesos, to deploy and test their \
       ClusterD applications with ease.</p> \
     <p> \
       <h3>What it is for:</h3> \
@@ -61,7 +61,7 @@ LABEL org.opencontainers.image.title="Mini ClusterD" \
     <p><strong>v1.0.0</strong></p> \
     <ul> \
       <li>Migrated the UI to the modern ClusterD WebUI.</li> \
-      <li>Added a dedicated Mini ClusterD Home page and ClusterD Overview dashboard.</li> \
+      <li>Added a dedicated Mini Cluster Home page and ClusterD Overview dashboard.</li> \
       <li>Added Docker Desktop theme synchronization and Docker Extension styling.</li> \
       <li>Removed authentication for the local HTTP ClusterD environment.</li> \
       <li>Replaced the extension icon with the ClusterD logo.</li> \
@@ -72,4 +72,4 @@ COPY docker-compose.yaml .
 COPY metadata.json .
 COPY clusterd.png .
 COPY --from=client-builder /ui/build ui
-CMD /service -socket /run/guest-services/extension-docker-mesos-extension.sock
+CMD ["/service", "-socket", "/run/guest-services/extension-docker-mesos-extension.sock"]

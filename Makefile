@@ -21,8 +21,8 @@ bin: ## Build the binary for the current platform
 build: ## Build service image to be deployed as a desktop extension
 	docker build --tag=$(IMAGE):${TAG} .
 
-install: build ## Install the extension
-	docker extension install -f $(IMAGE):$(TAG) 
+install: build ## Install or update the extension
+	@docker extension update -f $(IMAGE):$(TAG) || docker extension install -f $(IMAGE):$(TAG)
 
 update: build ## Update the extension
 	echo $(CHANGELOG)
@@ -32,10 +32,10 @@ yarn:
 	cd ui; yarn install; yarn start
 
 set-ui:
-	docker extension dev ui-source docker-mesos-extension http://localhost:3000
+	docker extension dev ui-source $(IMAGE):${TAG} http://localhost:3000
 
 unset-ui:
-	docker extension dev reset docker-mesos-extension
+	docker extension dev reset $(IMAGE):${TAG}
 
 uninstall: ## Uninstall the extension
 	echo $(CHANGELOG)

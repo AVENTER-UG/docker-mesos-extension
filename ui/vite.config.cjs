@@ -15,7 +15,7 @@ module.exports = defineConfig(({ mode }) => ({
   ],
   define: {
     "process.env.NODE_ENV": JSON.stringify(mode),
-    "process.env.REACT_APP_VERSION": JSON.stringify(process.env.REACT_APP_VERSION || "development"),
+    "process.env.REACT_APP_VERSION": JSON.stringify(process.env.REACT_APP_VERSION || "1.0.0"),
   },
   server: {
     port: 3000,

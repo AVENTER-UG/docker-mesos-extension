@@ -58,13 +58,14 @@ LABEL org.opencontainers.image.title="Mini ClusterD" \
     </p> " \
     com.docker.extension.publisher-url="https://www.aventer.biz" \
     com.docker.extension.changelog=" \
-    <p> \
-      <ul> \
-				<li>Migrate Apache Mesos to ClusterD Version 1.11.0-0.7.1. \
-				ClusterD is the continued development of Apache Mesos.<br> \
-				https://github.com/m3scluster/clusterd</li> \
-      </ul> \
-    </p> "
+    <p><strong>v1.0.0</strong></p> \
+    <ul> \
+      <li>Migrated the UI to the modern ClusterD WebUI.</li> \
+      <li>Added a dedicated Mini ClusterD Home page and ClusterD Overview dashboard.</li> \
+      <li>Added Docker Desktop theme synchronization and Docker Extension styling.</li> \
+      <li>Removed authentication for the local HTTP ClusterD environment.</li> \
+      <li>Replaced the extension icon with the ClusterD logo.</li> \
+    </ul>"
 
 COPY --from=builder /backend/bin/service /
 COPY docker-compose.yaml .

@@ -1,5 +1,5 @@
 IMAGE?=avhost/docker-mesos-extension
-TAG?=0.4.0
+TAG?=1.0.0
 
 BUILDER=default
 

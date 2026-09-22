@@ -1,3 +1,14 @@
+# v1.0.0
+
+- Migrated the Docker Extension UI to the modern ClusterD WebUI.
+- Added a dedicated Home page with Mini Cluster deployment instructions.
+- Added the ClusterD Overview dashboard and modern Tasks, Frameworks, Agents, Offers and Manager views.
+- Removed authentication for the Docker Extension's local HTTP ClusterD environment.
+- Synchronized the UI theme with Docker Desktop's light/dark setting.
+- Updated the navigation and menu styling to follow Docker Extension design guidelines.
+- Replaced the extension icon with the ClusterD logo.
+- Kept the extension name Mini Cluster while updating its runtime and messaging to ClusterD.
+
 # v0.4.0
 
 - Migrate Apache Mesos to ClusterD Version 1.11.0-0.7.1

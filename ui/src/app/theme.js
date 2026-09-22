@@ -7,6 +7,15 @@ export function isColorMode(value) {
   return value === "dark" || value === "light";
 }
 
+export function getDesktopColorMode(matchMedia = typeof window !== "undefined" ? window.matchMedia : null) {
+  try {
+    if (typeof matchMedia !== "function") return null;
+    return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  } catch (_) {
+    return null;
+  }
+}
+
 export function getStoredColorMode(storage) {
   try {
     const target = storage ?? (typeof window !== "undefined" ? window.localStorage : null);

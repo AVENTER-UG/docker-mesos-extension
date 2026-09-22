@@ -1,5 +1,5 @@
 {
-  "icon": "mesos.svg",
+  "icon": "clusterd.png",
   "vm": {
     "composefile": "docker-compose.yaml",
     "exposes": {

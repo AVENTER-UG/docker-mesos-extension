@@ -69,6 +69,6 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
 COPY --from=builder /backend/bin/service /
 COPY docker-compose.yaml .
 COPY metadata.json .
-COPY mesos.svg .
+COPY clusterd.png .
 COPY --from=client-builder /ui/build ui
 CMD /service -socket /run/guest-services/extension-docker-mesos-extension.sock

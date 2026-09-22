@@ -1,10 +1,11 @@
 export const TAB_ROUTES = [
-  { value: 0, hash: "#/" },
-  { value: 1, hash: "#/tasks" },
-  { value: 2, hash: "#/frameworks" },
-  { value: 3, hash: "#/agents" },
-  { value: 4, hash: "#/master" },
-  { value: 5, hash: "#/offers" },
+  { value: 0, hash: "#/home" },
+  { value: 1, hash: "#/" },
+  { value: 2, hash: "#/tasks" },
+  { value: 3, hash: "#/frameworks" },
+  { value: 4, hash: "#/agents" },
+  { value: 5, hash: "#/master" },
+  { value: 6, hash: "#/offers" },
 ];
 
 function firstRouteSegment(hash) {
@@ -18,20 +19,22 @@ function firstRouteSegment(hash) {
 
 export function tabValueFromHash(hash) {
   switch (firstRouteSegment(hash)) {
+    case "home":
+      return 0;
     case "tasks":
-      return 1;
-    case "frameworks":
       return 2;
-    case "agents":
+    case "frameworks":
       return 3;
-    case "master":
+    case "agents":
       return 4;
-    case "offers":
+    case "master":
       return 5;
+    case "offers":
+      return 6;
     case "":
     case "index.html":
     default:
-      return 0;
+      return 1;
   }
 }
 

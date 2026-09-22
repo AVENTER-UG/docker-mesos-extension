@@ -69,7 +69,7 @@ function UtilizationHeatmap({ values }) {
   );
 }
 
-function MiniClusterGuide() {
+export function MiniClusterGuide() {
   return (
     <Paper className="table-card" elevation={0} sx={{ p: 3 }}>
       <Stack spacing={2}>
@@ -166,7 +166,6 @@ function Dashboard() {
           </Box>
         </Stack>
       </Paper>
-      <MiniClusterGuide />
       <UtilizationHeatmap values={dashboard.utilization} />
 
       <Box>

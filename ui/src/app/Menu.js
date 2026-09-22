@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { AppBar, Box, Container, Link, Stack, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Container, Link, Tab, Tabs, Toolbar, Typography } from "@mui/material";
 import Tasks from "../features/tasks/Tasks";
 import Agents from "../features/agent/Agents";
-import Home from "../Home";
+import Overview from "../Home";
+import { MiniClusterGuide } from "../Home";
 import Frameworks from "../features/frameworks/Frameworks";
 import ClusterInfo from "../ClusterInfo";
 import Offers from "../features/offers/Offers";
 import Logo from "./Logo";
-import { useAuth } from "../auth/AuthContext";
-import ThemeToggle from "./ThemeToggle";
 import { hashFromTabValue, tabValueFromHash } from "./hashNavigation";
 
 const WEBUI_VERSION = process.env.REACT_APP_VERSION || "development";
@@ -28,7 +27,6 @@ function Footer() {
 
 export default function MainMenu() {
   const [tabValue, setTabValue] = useState(() => tabValueFromHash(window.location.hash));
-  const { principal } = useAuth();
 
   useEffect(() => {
     const updateActiveTabFromHash = () => setTabValue(tabValueFromHash(window.location.hash));
@@ -46,10 +44,6 @@ export default function MainMenu() {
         <Toolbar>
           <Logo />
           <Box flexGrow={1} />
-          <Stack direction="row" spacing={2} alignItems="center">
-            <ThemeToggle />
-            {principal && <Typography variant="body2">{principal}</Typography>}
-          </Stack>
         </Toolbar>
         <Tabs
           value={tabValue}
@@ -60,21 +54,23 @@ export default function MainMenu() {
           scrollButtons="auto"
           className="main-tabs"
         >
-          <Tab label="Overview" value={0} href={hashFromTabValue(0)} />
-          <Tab label="Tasks" value={1} href={hashFromTabValue(1)} />
-          <Tab label="Frameworks" value={2} href={hashFromTabValue(2)} />
-          <Tab label="Offers" value={5} href={hashFromTabValue(5)} />          
-          <Tab label="Agents" value={3} href={hashFromTabValue(3)} />
-          <Tab label="Manager details" value={4} href={hashFromTabValue(4)} />        
+          <Tab label="Home" value={0} href={hashFromTabValue(0)} />
+          <Tab label="Overview" value={1} href={hashFromTabValue(1)} />
+          <Tab label="Tasks" value={2} href={hashFromTabValue(2)} />
+          <Tab label="Frameworks" value={3} href={hashFromTabValue(3)} />
+          <Tab label="Offers" value={6} href={hashFromTabValue(6)} />
+          <Tab label="Agents" value={4} href={hashFromTabValue(4)} />
+          <Tab label="Manager details" value={5} href={hashFromTabValue(5)} />
         </Tabs>
       </AppBar>
       <Container maxWidth="xl" sx={{ py: 3, flex: 1 }}>
-        {tabValue === 0 && <Home />}
-        {tabValue === 1 && <Tasks />}
-        {tabValue === 2 && <Frameworks />}
-        {tabValue === 3 && <Agents />}
-        {tabValue === 4 && <ClusterInfo />}
-        {tabValue === 5 && <Offers />}
+        {tabValue === 0 && <MiniClusterGuide />}
+        {tabValue === 1 && <Overview />}
+        {tabValue === 2 && <Tasks />}
+        {tabValue === 3 && <Frameworks />}
+        {tabValue === 4 && <Agents />}
+        {tabValue === 5 && <ClusterInfo />}
+        {tabValue === 6 && <Offers />}
       </Container>
       <Footer />
     </Box>

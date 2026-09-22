@@ -1,6 +1,7 @@
 import {
   COLOR_MODE_STORAGE_KEY,
   createClusterTheme,
+  getDesktopColorMode,
   getStoredColorMode,
   persistColorMode,
 } from "./theme";
@@ -17,6 +18,12 @@ test("uses only valid persisted color modes and otherwise defaults to dark", () 
   expect(getStoredColorMode(storageWith("dark"))).toBe("dark");
   expect(getStoredColorMode(storageWith("sepia"))).toBe("dark");
   expect(getStoredColorMode(storageWith(null))).toBe("dark");
+});
+
+test("uses Docker Desktop's prefers-color-scheme setting when available", () => {
+  expect(getDesktopColorMode(() => ({ matches: true }))).toBe("dark");
+  expect(getDesktopColorMode(() => ({ matches: false }))).toBe("light");
+  expect(getDesktopColorMode(null)).toBeNull();
 });
 
 test("storage failures do not prevent the UI from starting", () => {

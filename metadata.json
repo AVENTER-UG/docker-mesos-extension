@@ -8,7 +8,7 @@
   },
   "ui": {
     "dashboard-tab": {
-      "title": "Mini Cluster",
+      "title": "Mini ClusterD",
       "src": "index.html",
       "root": "ui",
       "backend": {

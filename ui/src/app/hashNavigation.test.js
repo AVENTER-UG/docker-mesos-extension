@@ -8,10 +8,11 @@ describe("Mesos hash navigation", () => {
   });
   test.each([
     ["#/home", 0],
-    ["", 1],
-    ["#", 1],
-    ["#/", 1],
-    ["#/index.html", 1],
+    ["", 0],
+    ["#", 0],
+    ["#/", 0],
+    ["#/index.html", 0],
+    ["#/overview", 1],
     ["#/tasks", 2],
     ["#/frameworks", 3],
     ["#/agents", 4],
@@ -27,14 +28,14 @@ describe("Mesos hash navigation", () => {
     expect(tabValueFromHash("#/tasks/task-1")).toBe(2);
   });
 
-  test("falls back to Overview for unknown and malformed routes", () => {
-    expect(tabValueFromHash("#/unknown/path")).toBe(1);
-    expect(tabValueFromHash(null)).toBe(1);
+  test("falls back to Home for unknown and malformed routes", () => {
+    expect(tabValueFromHash("#/unknown/path")).toBe(0);
+    expect(tabValueFromHash(null)).toBe(0);
   });
 
   test.each([
     [0, "#/home"],
-    [1, "#/"],
+    [1, "#/overview"],
     [2, "#/tasks"],
     [3, "#/frameworks"],
     [4, "#/agents"],

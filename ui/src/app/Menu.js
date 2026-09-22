@@ -20,7 +20,7 @@ function Footer() {
       <Link href="https://github.com/m3scluster/clusterd-webui/blob/master/LICENSE" target="_blank" rel="noreferrer">EUPL 1.2</Link>
       <Typography variant="body2" component="span">© 2026 AVENTER</Typography>
       <Link href="https://github.com/m3scluster/clusterd-webui" target="_blank" rel="noreferrer">GitHub repository</Link>
-      <Typography variant="body2" component="span">Apache Mesos® © Apache Software Foundation</Typography>
+      <Typography variant="body2" component="span">ClusterD — continued development of Apache Mesos®</Typography>
     </Box>
   );
 }

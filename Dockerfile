@@ -24,8 +24,8 @@ COPY ui /ui
 RUN npm run build
 
 FROM alpine
-LABEL org.opencontainers.image.title="Mini Cluster" \
-    org.opencontainers.image.description="\"Mini Cluster\" enables you run a local Apache Mesos cluster." \
+LABEL org.opencontainers.image.title="Mini ClusterD" \
+    org.opencontainers.image.description="Mini ClusterD enables you run a local ClusterD cluster." \
     org.opencontainers.image.vendor="AVENTER UG (haftungsbeschränkt)" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://www.aventer.biz/assets/images/products/minicluster.svg" \
@@ -34,25 +34,25 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.categories="container-orchestration,cloud-development" \
     com.docker.extension.detailed-description="\    
-    <p>\"Mini Cluster\" enables developers who are working with Apache Mesos to deploy and test their \
-      Apache Mesos applications with ease.</p> \
+    <p>\"Mini ClusterD\" enables developers who are working with ClusterD, the continued development of Apache Mesos, to deploy and test their \
+      ClusterD applications with ease.</p> \
     <p> \
       <h3>What it is for:</h3> \
-      These Docker Extension should help you to run, test and develop Frameworks for Apache Mesos. \
+      These Docker Extension should help you to run, test and develop Frameworks for ClusterD. \
     </p> \
     <p> \
       <h3>What it does not: </h3> \
       It does not include any kind of frameworks (like Marathon or M3s). You are not able to run workload out of \
       the box. But there are a lot of frameworks outside, that help you to bring your software and/or containers\
-      up and running under Apache Mesos.\
+      up and running under ClusterD.\
     </p> \
     <p> \
       <h3>Features:</h3> \
       <ul> \
-        <li>Access to the Apache Mesos UI</li>\
+        <li>Access to the ClusterD UI</li>\
         <li>Support Docker containers</li> \
-        <li>Access to the Mesos Master API (Port 5050)</li> \
-        <li>Access to Apache Mesos Zookeeper (Port 2181)</li> \
+        <li>Access to the ClusterD Master API (Port 5050)</li> \
+        <li>Access to ClusterD Zookeeper (Port 2181)</li> \
         <li>Include traefik Proxy</li> \
       </ul> \
     </p> " \

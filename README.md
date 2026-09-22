@@ -1,6 +1,6 @@
-# Docker Desktop Extension for Apache Mesos
+# Docker Desktop Extension for ClusterD
 
-The Docker Desktop Extension enables developers who are working with Apache Mesos to deploy and test their 
+The Docker Desktop Extension enables developers who are working with ClusterD, the continued development of Apache Mesos, to deploy and test their
 applications from Docker Desktop with ease.
 
 ## Building locally

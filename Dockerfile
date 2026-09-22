@@ -33,7 +33,7 @@ LABEL org.opencontainers.image.title="Mini Cluster" \
     org.opencontainers.image.source="https://github.com/AVENTER-UG/docker-mesos-extension" \
     com.docker.desktop.extension.icon="https://www.clusterd.de/assets/images/clusterd-mark.png" \
     com.docker.extension.additional-urls='[{"title":"Support","url":"https://github.com/AVENTER-UG/docker-mesos-extension/issues"}]' \
-    com.docker.extension.screenshots='[{"alt":"View Tasks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task.png"}, {"alt":"View Frameworks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework.png"}]' \
+    com.docker.extension.screenshots='[{"alt":"View Tasks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task.png"}, {"alt":"View Frameworks", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework.png"}, {"alt":"View Task Details", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-task-detail.png"}, {"alt":"View Framework Detail", "url":"https://raw.githubusercontent.com/AVENTER-UG/docker-mesos-extension/master/assets/ui-framework-details.png"}]' \
     com.docker.desktop.extension.api.version=">= 0.2.3" \
     com.docker.extension.categories="container-orchestration,cloud-development" \
     com.docker.extension.detailed-description="\    

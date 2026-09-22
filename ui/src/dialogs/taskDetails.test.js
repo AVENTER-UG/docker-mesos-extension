@@ -102,7 +102,7 @@ test("builds the sandbox link with an explicit executor id", () => {
     executor_id: "executor-1",
     id: "task-1",
     _agent: { hostname: "agent-1.example", pid: "slave@agent-1.example:5051" },
-  })).toBe("//agent-1.example:5051/#/agents/agent-1/frameworks/framework-1/executors/executor-1/tasks/task-1/browse");
+  })).toBe("http://agent-1.example:5051/#/agents/agent-1/frameworks/framework-1/executors/executor-1/tasks/task-1/browse");
 });
 
 test("uses the task id for a default executor when executor_id is empty", () => {
@@ -112,7 +112,7 @@ test("uses the task id for a default executor when executor_id is empty", () => 
     executor_id: "",
     id: "task#1",
     _agent: { hostname: "agent-1.example", pid: "slave@agent-1.example:5051" },
-  })).toBe("//agent-1.example:5051/#/agents/agent%2F1/frameworks/framework%201/executors/task%231/tasks/task%231/browse");
+  })).toBe("http://agent-1.example:5051/#/agents/agent%2F1/frameworks/framework%201/executors/task%231/tasks/task%231/browse");
 });
 
 test("builds encoded framework and agent detail links", () => {

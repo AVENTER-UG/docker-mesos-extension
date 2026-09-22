@@ -104,5 +104,5 @@ export function masterHttpEndpoint(master, path = "/metrics/snapshot", environme
     : Number(pidPort) || 5050;
   if (!hostname || !/^[A-Za-z0-9.-]+$/.test(hostname) || !Number.isInteger(port) || port < 1 || port > 65535) return null;
   if (environment === "development") return `/master-api/${encodeURIComponent(hostname)}/${port}${path}`;
-  return `//${hostname}:${port}${path}`;
+  return `http://${hostname}:${port}${path}`;
 }

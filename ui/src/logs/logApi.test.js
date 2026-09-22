@@ -30,13 +30,13 @@ test("calculates a bounded tail window", () => {
 test("builds development and production agent API endpoints", () => {
   const agent = { id: "agent/one", hostname: "agent-1.example", pid: "slave(1)@10.0.0.2:5051" };
   expect(agentApiEndpoint(agent, "development")).toBe("/agent-api/agent-1.example/5051/api/v1");
-  expect(agentApiEndpoint(agent, "production")).toBe("//agent-1.example:5051/api/v1");
+  expect(agentApiEndpoint(agent, "production")).toBe("http://agent-1.example:5051/api/v1");
   expect(agentApiEndpoint({ hostname: "agent-1", port: 5052 }, "development")).toBe("/agent-api/agent-1/5052/api/v1");
   expect(agentApiEndpoint({ hostname: "bad/host", port: 5051 }, "development")).toBeNull();
-  expect(agentApiEndpoint({ hostname: "agent-1", port: 5051 }, "production")).toBe("//agent-1:5051/api/v1");
+  expect(agentApiEndpoint({ hostname: "agent-1", port: 5051 }, "production")).toBe("http://agent-1:5051/api/v1");
   expect(agentHttpEndpoint(agent, "/state", "development")).toBe("/agent-api/agent-1.example/5051/state");
   expect(agentHttpEndpoint(agent, "/version", "development")).toBe("/agent-api/agent-1.example/5051/version");
-  expect(agentHttpEndpoint(agent, "/files/browse", "production")).toBe("//agent-1.example:5051/files/browse");
+  expect(agentHttpEndpoint(agent, "/files/browse", "production")).toBe("http://agent-1.example:5051/files/browse");
   expect(agentHttpEndpoint(agent, "/files/read", "development")).toBe("/agent-api/agent-1.example/5051/files/read");
   expect(agentHttpEndpoint(agent, "/not-allowed", "production")).toBeNull();
 });
@@ -85,7 +85,7 @@ test("reads agent logs from the production agent API with a complete call body",
   await readAgentLogTail(request, agent, "AGENT");
 
   expect(request).toHaveBeenCalledTimes(1);
-  expect(request.mock.calls[0][0]).toBe("//agent-1.example:5051/api/v1");
+  expect(request.mock.calls[0][0]).toBe("http://agent-1.example:5051/api/v1");
   expect(JSON.parse(request.mock.calls[0][1].body)).toEqual(agentLogCall({ source: "AGENT", length: 0 }));
 });
 
@@ -98,13 +98,13 @@ test("reads independent stdout and stderr tails with one shared length", async (
     stdout: { size: 70000, offset: 4464, data: "out" },
     stderr: { size: 10, offset: 0, data: "err" },
   });
-  expect(request.mock.calls[0][0]).toBe("//agent-1:5051/api/v1");
+  expect(request.mock.calls[0][0]).toBe("http://agent-1:5051/api/v1");
   expect(JSON.parse(request.mock.calls[0][1].body)).toEqual(agentLogCall({
     source: "CONTAINER",
     containerId: "container-1",
     length: 0,
   }));
-  expect(request.mock.calls[1][0]).toBe("//agent-1:5051/api/v1");
+  expect(request.mock.calls[1][0]).toBe("http://agent-1:5051/api/v1");
   expect(JSON.parse(request.mock.calls[1][1].body)).toEqual(agentLogCall({
     source: "CONTAINER",
     containerId: "container-1",

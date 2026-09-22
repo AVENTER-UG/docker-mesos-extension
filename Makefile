@@ -51,6 +51,9 @@ push: prepare-buildx ## Build & Upload extension image to hub. Do not push if ta
 	docker buildx create --use default
 	docker buildx build --push --sbom=true --provenance=true --platform=linux/amd64,linux/arm64 --build-arg TAG=$(TAG) --tag=$(IMAGE):$(TAG) .
 
+debug:
+	docker extension dev debug $(IMAGE):${TAG}
+
 help: ## Show this help
 	@echo Please specify a build target. The choices are:
 	@grep -E '^[0-9a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(INFO_COLOR)%-30s$(NO_COLOR) %s\n", $$1, $$2}'

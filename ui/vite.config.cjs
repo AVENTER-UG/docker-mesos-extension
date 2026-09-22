@@ -3,7 +3,7 @@ const react = require("@vitejs/plugin-react");
 const setupProxy = require("./src/setupProxy");
 
 module.exports = defineConfig(({ mode }) => ({
-  base: mode === "production" ? "/app/" : "/",
+  base: mode === "production" ? "./" : "/",
   plugins: [
     react({ include: /\.[jt]sx?$/ }),
     {

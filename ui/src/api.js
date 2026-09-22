@@ -10,6 +10,12 @@ export function buildBasicAuthHeader(username, password) {
   return `Basic ${btoa(`${username}:${password}`)}`;
 }
 
+export function resolveApiUrl(path, environment = process.env.NODE_ENV) {
+  if (/^[A-Za-z][A-Za-z\d+.-]*:/.test(path) || String(path).startsWith("//")) return path;
+  if (environment === "production") return `http://127.0.0.1:5050${path}`;
+  return path;
+}
+
 export async function fetchJson(path, authHeader, options = {}) {
   const headers = {
     Accept: "application/json",
@@ -18,7 +24,7 @@ export async function fetchJson(path, authHeader, options = {}) {
 
   if (authHeader) headers.Authorization = authHeader;
 
-  const response = await fetch(path, { ...options, headers });
+  const response = await fetch(resolveApiUrl(path), { ...options, headers });
   if (!response.ok) {
     if (response.status === 401) throw new ApiError("Authentication failed", 401);
     let detail = "";

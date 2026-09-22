@@ -71,7 +71,7 @@ test("opens an authenticated shell session and renders streamed output", async (
 
   expect(launchTaskShell).toHaveBeenCalledWith(
     global.fetch,
-    "//agent-1.example:5051/api/v1",
+    "http://agent-1.example:5051/api/v1",
     "Basic synthetic",
     { value: "webui-shell-synthetic-uuid", parent: { value: "task-container" } },
     expect.anything(),
@@ -80,7 +80,7 @@ test("opens an authenticated shell session and renders streamed output", async (
   expect(readProcessIOStream).toHaveBeenCalled();
   expect(sendTaskShellInput).toHaveBeenCalledWith(
     global.fetch,
-    "//agent-1.example:5051/api/v1",
+    "http://agent-1.example:5051/api/v1",
     "Basic synthetic",
     { value: "webui-shell-synthetic-uuid", parent: { value: "task-container" } },
     "printf 'ClusterD task shell ready\\n'\n",

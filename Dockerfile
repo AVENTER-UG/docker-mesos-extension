@@ -21,7 +21,10 @@ RUN --mount=type=cache,target=/usr/src/app/.npm \
     npm ci
 # install
 COPY ui /ui
-RUN npm run build
+RUN npm run build \
+    && test -f /ui/build/index.html \
+    && test -d /ui/build/static \
+    && test -n "$(find /ui/build/static -type f -print -quit)"
 
 FROM alpine
 LABEL org.opencontainers.image.title="Mini Cluster" \
@@ -71,5 +74,6 @@ COPY --from=builder /backend/bin/service /
 COPY docker-compose.yaml .
 COPY metadata.json .
 COPY clusterd.png .
+COPY mesos.svg .
 COPY --from=client-builder /ui/build ui
 CMD ["/service", "-socket", "/run/guest-services/extension-docker-mesos-extension.sock"]

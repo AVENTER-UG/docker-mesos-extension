@@ -27,7 +27,7 @@ export function agentApiEndpoint(agent, environment = process.env.NODE_ENV) {
   if (!hostname || !/^[A-Za-z0-9.-]+$/.test(hostname) || !port) return null;
 
   if (environment !== "development") {
-    return `//${hostname}:${port}/api/v1`;
+    return `http://${hostname}:${port}/api/v1`;
   }
 
   return `/agent-api/${encodeURIComponent(hostname)}/${port}/api/v1`;
@@ -40,7 +40,7 @@ export function agentHttpEndpoint(agent, path, environment = process.env.NODE_EN
   const hostname = agent?.hostname;
   const port = agentPort(agent);
   if (!hostname || !/^[A-Za-z0-9.-]+$/.test(hostname) || !port) return null;
-  if (environment !== "development") return `//${hostname}:${port}${path}`;
+  if (environment !== "development") return `http://${hostname}:${port}${path}`;
   return `/agent-api/${encodeURIComponent(hostname)}/${port}${path}`;
 }
 
@@ -49,7 +49,7 @@ export function agentSandboxEndpoint(agent, path, environment = process.env.NODE
   const hostname = agent?.hostname;
   const port = agentPort(agent);
   if (!hostname || !/^[A-Za-z0-9.-]+$/.test(hostname) || !port) return null;
-  return `//${hostname}:${port}/${path}`;
+  return `http://${hostname}:${port}/${path}`;
 }
 
 export function latestTaskContainer(task) {
